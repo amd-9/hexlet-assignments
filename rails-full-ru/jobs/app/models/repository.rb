@@ -9,9 +9,9 @@ class Repository < ApplicationRecord
   aasm do
     state :created, initial: true
     state :fetching, :fetched, :failed
-  
+
     event :fetch do
-      transitions from: [:created, :fetched, :failed], to: :fetching
+      transitions from: %i[created fetched failed], to: :fetching
     end
 
     event :complete_fetch do

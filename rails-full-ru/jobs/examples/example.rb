@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # bin/rails g job fetch_books_titles
 #       create  test/jobs/fetch_books_titles_job_test.rb
 #       create  app/jobs/fetch_books_titles_job.rb
@@ -12,14 +14,13 @@ class FetchBooksTitlesJob < ApplicationJob
 end
 
 # test/jobs/fetch_books_titles_job_test.rb
-require "test_helper"
+require 'test_helper'
 
 class FetchBooksTitlesJobTest < ActiveJob::TestCase
   # test "the truth" do
   #   assert true
   # end
 end
-
 
 # app/jobs/fetch_books_titles_job.rb
 class FetchBooksTitlesJob < ApplicationJob
@@ -52,9 +53,9 @@ FetchBooksTitlesJob.set(wait: 5.seconds).perform_later
 FetchBooksTitlesJob.set(wait_until: Time.now + 10.seconds).perform_later
 
 # config/application.rb
-require_relative "boot"
+require_relative 'boot'
 
-require "rails/all"
+require 'rails/all'
 
 # Require the gems listed in Gemfile, including any gems
 # you've limited to :test, :development, or :production.
@@ -136,8 +137,6 @@ New book has been created
 NewBookMailer.new_book.deliver_later
 NewBookMailer.new_book.deliver_now
 
-
-
 # https://github.com/mperham/sidekiq
 # Для работы sidekiq требуется запущенный redis
 # Для выполнения задач требуется запущенный sidekiq
@@ -147,9 +146,6 @@ NewBookMailer.new_book.deliver_now
 gem 'sidekiq'
 
 # config/application.rb
-require_relative "boot"
-
-require "rails/all"
 
 # Require the gems listed in Gemfile, including any gems
 # you've limited to :test, :development, or :production.
@@ -176,7 +172,6 @@ end
 
 # app/jobs/fetch_books_titles_job.rb
 class FetchBooksTitlesJob
-  #
   include Sidekiq::Worker
 
   def perform

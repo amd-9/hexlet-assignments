@@ -1,5 +1,6 @@
 # frozen_string_literal: true
 
+include WebMock::API
 require 'test_helper'
 
 class RepositoryLoaderJobTest < ActiveJob::TestCase

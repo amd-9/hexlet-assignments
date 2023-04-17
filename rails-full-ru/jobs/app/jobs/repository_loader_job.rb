@@ -3,14 +3,9 @@
 class RepositoryLoaderJob < ApplicationJob
   queue_as :default
 
-  def perform(*repositories)
+  def perform(id)
     # Do something later
-    pp 'Loading repository'
-
-    repository = repositories.first
-
-    pp repository[:link]
-
+    repository = Repository.find id
     repository.fetch
 
     begin

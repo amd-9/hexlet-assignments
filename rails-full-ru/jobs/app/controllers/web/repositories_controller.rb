@@ -19,7 +19,7 @@ class Web::RepositoriesController < Web::ApplicationController
     
     if @repository.save
       RepositoryLoaderJob.perform_later @repository
-      redirect_to repositories_path, notice: 'Repository was successfully created'
+      redirect_to @repository, notice: 'Repository was successfully created'
     else
       render :new, status: :unprocessable_entity
     end
@@ -31,6 +31,7 @@ class Web::RepositoriesController < Web::ApplicationController
     @repository = Repository.find params[:id]
 
     RepositoryLoaderJob.perform_later @repository
+    redirect_to repositories_path
     # END
   end
 
@@ -39,6 +40,8 @@ class Web::RepositoriesController < Web::ApplicationController
     Repository.all.each do |repository|
       RepositoryLoaderJob.perform_later repository
     end
+
+    redirect_to repositories_path
     # END
   end
 

@@ -11,7 +11,7 @@ class RepositoryLoaderJob < ApplicationJob
     begin
       client = Octokit::Client.new
       repo_data = client.repo Octokit::Repository.from_url repository[:link]
-
+    
       repository.update({
                           owner_name: repo_data[:owner][:login],
                           repo_name: repo_data[:full_name],
@@ -21,9 +21,10 @@ class RepositoryLoaderJob < ApplicationJob
                           language: repo_data[:language],
                           repo_created_at: repo_data[:created_at],
                           repo_updated_at: repo_data[:updated_at]
-                        })
+                        })     
 
-      repository.complete_fetch
+     repository.complete_fetch                  
+
     rescue StandardError
       repository.fetch_failed
     ensure

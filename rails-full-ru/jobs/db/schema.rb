@@ -1,5 +1,3 @@
-# frozen_string_literal: true
-
 # This file is auto-generated from the current state of the database. Instead
 # of editing this file, please use the migrations feature of Active Record to
 # incrementally modify your database, and then regenerate this schema definition.
@@ -12,19 +10,20 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 20_220_921_111_938) do
-  create_table 'repositories', force: :cascade do |t|
-    t.string 'link'
-    t.string 'owner_name'
-    t.string 'repo_name'
-    t.text 'description'
-    t.string 'aasm_state'
-    t.string 'default_branch'
-    t.integer 'watchers_count'
-    t.string 'language'
-    t.datetime 'repo_created_at', precision: nil
-    t.datetime 'repo_updated_at', precision: nil
-    t.datetime 'created_at', null: false
-    t.datetime 'updated_at', null: false
+ActiveRecord::Schema[7.0].define(version: 2022_09_21_111938) do
+  create_table "repositories", force: :cascade do |t|
+    t.string "link"
+    t.string "owner_name"
+    t.string "repo_name"
+    t.text "description"
+    t.string "aasm_state"
+    t.string "default_branch"
+    t.integer "watchers_count"
+    t.string "language"
+    t.datetime "repo_created_at", precision: nil
+    t.datetime "repo_updated_at", precision: nil
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
+
 end

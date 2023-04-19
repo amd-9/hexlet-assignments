@@ -3,7 +3,7 @@
 module Web
   class ArticlesController < Web::ApplicationController
     # BEGIN
-    caches_page :show
+    caches_action :show
     # END
 
     def index

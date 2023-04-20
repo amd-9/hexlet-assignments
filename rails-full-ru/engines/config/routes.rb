@@ -3,6 +3,7 @@
 Rails.application.routes.draw do
   # BEGIN
   mount RailsStats::Engine, at: '/stats'
+  mount Blog::Engine, at: '/blog'
   # END
 
   scope module: :web do
